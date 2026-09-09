@@ -105,7 +105,7 @@ with tab_map:
                                 tooltip=f"{dmg} · score {f['properties']['score']}").add_to(fg)
         fg.add_to(m)
     folium.LayerControl().add_to(m)
-    st_folium(m, height=650, use_container_width=True)
+    st_folium(m, height=650, width="stretch")
 
     dl1, dl2 = st.columns(2)
     dl1.download_button("Download damage grid (GeoJSON)", (RESULTS_DIR / f"{qk}_damage_grid.geojson").read_bytes(),
@@ -135,7 +135,7 @@ with tab_reg:
     for col, method in ((i1, "sift"), (i2, "lightglue")):
         p = RESULTS_DIR / f"{qk}_{src_choice}_{method}_matches.jpg"
         if p.exists():
-            col.image(str(p), caption=f"{method.upper()} inlier matches — pre ({src_choice}) | post", use_container_width=True)
+            col.image(str(p), caption=f"{method.upper()} inlier matches — pre ({src_choice}) | post", width="stretch")
         grid_p = RESULTS_DIR / f"{qk}_{src_choice}_{method}_inlier_grid.npy"
         if grid_p.exists():
             g = np.load(grid_p)
@@ -146,7 +146,7 @@ with tab_reg:
     for col, name in ((k1, "checker_raw"), (k2, "checker_registered")):
         p = RESULTS_DIR / f"{qk}_{name}.jpg"
         if p.exists():
-            col.image(str(p), use_container_width=True)
+            col.image(str(p), width="stretch")
 
 # ------------------------------------------------------------------ validation
 with tab_val:
@@ -160,8 +160,8 @@ with tab_val:
             f"At *moderate* ({validation['moderate_threshold']}): precision {validation['moderate_precision']}, recall {validation['moderate_recall']}."
         )
         b1, b2 = st.columns(2)
-        b1.image(str(RESULTS_DIR / f"{qk}_dins_boxplot.png"), use_container_width=True)
-        b2.image(str(RESULTS_DIR / f"{qk}_dins_pr_curve.png"), use_container_width=True)
+        b1.image(str(RESULTS_DIR / f"{qk}_dins_boxplot.png"), width="stretch")
+        b2.image(str(RESULTS_DIR / f"{qk}_dins_pr_curve.png"), width="stretch")
         st.caption("Ground truth: CAL FIRE Damage Inspection (DINS) public feature service, structure-level field inspections.")
     else:
         st.warning("No DINS inspections fall inside this tile, so no ground-truth comparison is available.")
