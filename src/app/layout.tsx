@@ -3,9 +3,9 @@ import { Nav } from "@/components/nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "동네 한의원 마케팅 AI",
+  title: "한카피 — 올려도 되는 한의원 글만",
   description:
-    "의료광고 규정을 아는 AI가 동네 한의원의 플레이스 소개글, 블로그, 인스타그램 게시물을 대신 쓰고 검수합니다.",
+    "의료광고법을 아는 AI가 한의원 홍보 글을 검사하고, 네이버 플레이스·블로그·인스타 글을 규정에 맞게 작성합니다.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

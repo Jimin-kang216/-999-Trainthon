@@ -20,7 +20,7 @@ export function Nav() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
         <div className="flex items-center gap-2 shrink-0">
           <Link href="/" className="font-bold tracking-tight text-ink">
-            동네 한의원 마케팅 AI
+            한카피
           </Link>
           <LlmStatusChip />
         </div>

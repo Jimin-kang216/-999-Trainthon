@@ -57,16 +57,15 @@ export default function HomePage() {
   return (
     <div className="space-y-12">
       <section className="max-w-3xl">
-        <p className="text-xs font-semibold tracking-widest text-brand uppercase">For solo clinics</p>
+        <p className="text-xs font-semibold tracking-widest text-brand uppercase">한의원 홍보</p>
         <h1 className="mt-3 text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
-          실력은 있는데 검색에서 안 보이는
+          올려도 되는
           <br />
-          동네 한의원을 위한 마케팅 AI
+          한의원 글만
         </h1>
-        <p className="mt-4 text-ink-soft leading-relaxed">
-          의료광고는 일반 마케팅과 다릅니다. 치료 후기, &ldquo;최고&rdquo;, 할인, 리뷰 이벤트가 전부 위법이라서 1인 원장은
-          홍보를 시작조차 못 하고, 대행사는 월 100만 원이 넘습니다. 이 도구는 규정을 알고 있는 AI가 글을 쓰고 검수해서, 원장이
-          직접 안전하게 알릴 수 있게 합니다.
+        <p className="mt-4 text-ink-soft leading-relaxed max-w-xl">
+          후기·최고·할인은 의료광고법 위반입니다. 한카피가 조항별로 걸러 주고, 네이버 플레이스·블로그·인스타 글을 규정에
+          맞게 씁니다.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
