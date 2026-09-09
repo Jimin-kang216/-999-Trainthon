@@ -24,7 +24,10 @@ def load_pairs() -> list[dict]:
     out = []
     for d in sorted(TILE_DIR.iterdir()):
         if (d / "pair.json").exists() and (RESULTS_DIR / f"{d.name}_damage_summary.json").exists():
-            out.append(json.loads((d / "pair.json").read_text()))
+            rec = json.loads((d / "pair.json").read_text())
+            rec["_has_dins"] = (RESULTS_DIR / f"{d.name}_validation.json").exists()
+            out.append(rec)
+    out.sort(key=lambda p: (not p["_has_dins"], p.get("dist_to_fire_km", 99)))
     return out
 
 
@@ -73,7 +76,7 @@ tab_map, tab_reg, tab_val = st.tabs(["Damage map", "Registration (AI vs classica
 # ------------------------------------------------------------------ map
 with tab_map:
     w, s, e, n = summary["bounds_wgs84"]
-    m = folium.Map(location=[(s + n) / 2, (w + e) / 2], zoom_start=13, tiles="CartoDB positron")
+    m = folium.Map(location=[(s + n) / 2, (w + e) / 2], zoom_start=13, tiles="OpenStreetMap")
     folium.TileLayer("Esri.WorldImagery", name="Esri imagery (basemap)").add_to(m)
     if show_heat:
         folium.raster_layers.ImageOverlay(
