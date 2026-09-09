@@ -7,20 +7,26 @@
 ## 필수 (발표 전까지)
 
 1. **데모를 자기 노트북에서 한 번 띄운다.** (20분)
+
+   가장 확실한 방법은 단일 파일이다. GitHub에서 `docs/AfterMap_demo.html` → **Download raw file** → 더블클릭.
+
+   라이브 앱까지 보고 싶으면:
    ```bash
    git clone -b cursor/aftermap-2b6e https://github.com/Jimin-kang216/-999-Trainthon.git
-   cd -999-Trainthon
+   cd ./-999-Trainthon
    pip install -r requirements.txt
    streamlit run app.py
    ```
-   타일 GeoTIFF는 git에 없다. 앱이 “No processed tiles”이면:
+   `-b` 를 빼면 README만 있는 `main`이 받아진다. `cd` 앞의 `./` 도 빼면 안 된다(폴더명이 `-`로 시작).
+
+   앱이 “No processed tiles”이면:
    ```bash
    python -m src.ingest all --n 4
    python -m src.register
    python -m src.damage
    python -m src.validate
    ```
-   네트워크가 불안하면 `docs/demo_eaton.html`을 브라우저로 연다 (오프라인 백업).
+   네트워크가 불안하면 `docs/AfterMap_demo.html`을 브라우저로 연다 (오프라인 백업, 단일 파일).
 
 2. **3분 대본을 소리 내서 두 번 읽는다.** (`docs/PITCH.md`)
    슬라이드 PNG는 `docs/slides/01_title.png` … `08_ask.png`. 구글 슬라이드에 이미지로 넣으면 끝.

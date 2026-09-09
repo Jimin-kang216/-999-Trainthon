@@ -4,6 +4,30 @@ TrainThon 프로젝트. 재난 **전·후 고해상도 위성영상을 학습 �
 
 대상 사례: **2025년 1월 로스앤젤레스 산불** (Eaton / Palisades). 데이터는 [Maxar Open Data Program](https://www.maxar.com/open-data) STAC 카탈로그에서 공개 COG를 읽는다.
 
+## 열어보기 (제일 쉬운 순서)
+
+**A. 파일 하나만 열기 — 설치도, 인터넷도 필요 없음**
+
+[`docs/AfterMap_demo.html`](docs/AfterMap_demo.html) 한 파일에 이미지가 전부 들어 있다.
+GitHub에서 이 파일을 열고 우측 **Download raw file** 버튼 → 다운로드된 파일을 더블클릭.
+
+**B. 발표 슬라이드** — `docs/slides/01_title.png` … `08_ask.png` (GitHub에서 바로 보인다)
+
+**C. 라이브 웹앱** — 노트북에서만 (코랩 아님, Streamlit은 로컬 브라우저 앱이다)
+
+```bash
+git clone -b cursor/aftermap-2b6e https://github.com/Jimin-kang216/-999-Trainthon.git
+cd ./-999-Trainthon          # 폴더명이 -로 시작해서 ./ 를 반드시 붙인다
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+> 자주 막히는 두 곳
+> 1. `-b cursor/aftermap-2b6e` 를 빼면 `main`이 받아지는데 거기엔 README뿐이다.
+> 2. `cd -999-Trainthon` 은 `-9`를 옵션으로 읽어서 실패한다. `cd ./-999-Trainthon`.
+
+위성 GeoTIFF는 git에 없다(용량). 앱이 "No processed tiles"이면 아래를 한 번 돌린다 (수십 분, 인터넷 필요).
+
 ## 발표 자료 (TrainThon)
 
 당신이 할 일만: [`docs/CHECKLIST.md`](docs/CHECKLIST.md)
@@ -14,7 +38,8 @@ TrainThon 프로젝트. 재난 **전·후 고해상도 위성영상을 학습 �
 | `docs/PITCH.md` | 3분 대본 |
 | `docs/QNA.md` | 예상 질문 |
 | `docs/AI_USAGE.md` | 심사 기준 ‘AI Tool 활용도’ |
-| `docs/demo_eaton.html` | Streamlit이 죽을 때 브라우저로 여는 백업 |
+| `docs/AfterMap_demo.html` | **설치 없이 열리는 단일 파일 데모** (이미지 내장) |
+| `docs/demo_eaton.html` | 위와 같은 내용, 폴더 통째로 있을 때만 열림 |
 
 ```
 Maxar STAC  →  DISK + LightGlue 정합  →  ΔNDVI · SSIM 점수  →  50 m GeoJSON

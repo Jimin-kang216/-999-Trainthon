@@ -38,4 +38,4 @@ severe 임계값에서 정밀도 0.78, 재현율 0.96입니다.
 
 ---
 
-데모가 죽으면: “백업 HTML을 열겠습니다” → `docs/demo_eaton.html`. 숫자 세 개는 슬라이드에 있다.
+데모가 죽으면: “백업 HTML을 열겠습니다” → `docs/AfterMap_demo.html`. 숫자 세 개는 슬라이드에 있다.
