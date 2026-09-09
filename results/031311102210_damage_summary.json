@@ -1,0 +1,21 @@
+{
+  "quadkey": "031311102210",
+  "fire": "Palisades",
+  "pre_date": "2024-12-21",
+  "post_date": "2025-01-09",
+  "cell_m": 49.3,
+  "n_cells": 11449,
+  "n_severe": 2518,
+  "n_moderate": 418,
+  "severe_area_ha": 611.6,
+  "moderate_area_ha": 101.5,
+  "mean_d_ndvi": -0.065,
+  "mean_change_raw": 0.3188,
+  "mean_change_registered": 0.2484,
+  "bounds_wgs84": [
+    -118.628802,
+    34.103641,
+    -118.570309,
+    34.152284
+  ]
+}

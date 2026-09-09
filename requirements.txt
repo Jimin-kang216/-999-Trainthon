@@ -16,3 +16,4 @@ tqdm>=4.66
 streamlit>=1.32
 folium>=0.15
 streamlit-folium>=0.18
+scikit-learn>=1.3
