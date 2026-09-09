@@ -4,6 +4,18 @@ TrainThon 프로젝트. 재난 **전·후 고해상도 위성영상을 학습 �
 
 대상 사례: **2025년 1월 로스앤젤레스 산불** (Eaton / Palisades). 데이터는 [Maxar Open Data Program](https://www.maxar.com/open-data) STAC 카탈로그에서 공개 COG를 읽는다.
 
+## 발표 자료 (TrainThon)
+
+당신이 할 일만: [`docs/CHECKLIST.md`](docs/CHECKLIST.md)
+
+| 파일 | 용도 |
+|---|---|
+| `docs/slides/01_title.png` … `08_ask.png` | 구글 슬라이드에 넣을 8장 |
+| `docs/PITCH.md` | 3분 대본 |
+| `docs/QNA.md` | 예상 질문 |
+| `docs/AI_USAGE.md` | 심사 기준 ‘AI Tool 활용도’ |
+| `docs/demo_eaton.html` | Streamlit이 죽을 때 브라우저로 여는 백업 |
+
 ```
 Maxar STAC  →  DISK + LightGlue 정합  →  ΔNDVI · SSIM 점수  →  50 m GeoJSON
                   vs SIFT (대조군)         격자 집계              Streamlit 지도

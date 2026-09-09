@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AfterMap — Eaton 알타데나 백업 데모</title>
+<style>
+  :root { --navy:#0f2744; --gold:#e6a817; --paper:#f7f4ee; --ink:#1c2430; }
+  body { margin:0; font-family: "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; background:var(--paper); color:var(--ink); }
+  header { background:var(--navy); color:#fff; padding:28px 32px; }
+  header h1 { margin:0 0 6px; font-size:28px; }
+  header p { margin:0; opacity:.8; }
+  .metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; padding:20px 32px; }
+  .m { background:#fff; border-radius:12px; padding:16px 18px; box-shadow:0 1px 4px #0001; }
+  .m b { display:block; font-size:26px; color:var(--navy); }
+  .m span { color:#667; font-size:13px; }
+  section { padding:8px 32px 28px; }
+  h2 { font-size:18px; color:var(--navy); margin:18px 0 8px; }
+  img { max-width:100%; border-radius:8px; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .note { font-size:13px; color:#556; }
+  footer { padding:16px 32px 40px; font-size:13px; color:#667; }
+</style>
+</head>
+<body>
+<header>
+  <h1>AfterMap — 백업 데모</h1>
+  <p>Eaton 산불 · 타일 031311103033 · Streamlit이 안 될 때 이 파일을 브라우저로 연다.</p>
+</header>
+<div class="metrics">
+  <div class="m"><b>9–16×</b><span>NAIP→Maxar LightGlue / SIFT 인라이어</span></div>
+  <div class="m"><b>0.934</b><span>ROC-AUC · Destroyed vs No Damage</span></div>
+  <div class="m"><b>9,115</b><span>CAL FIRE DINS 구조물 (이 타일)</span></div>
+  <div class="m"><b>1,125 ha</b><span>severe 격자 면적</span></div>
+</div>
+<section>
+  <h2>1. 전 · 정합된 후 · 피해 점수</h2>
+  <img src="demo_assets/pre_post_damage.jpg" alt="pre, post, damage overlay"/>
+  <p class="note">왼쪽 Maxar 전(2025-01-01) · 가운데 정합된 후(2025-01-10) · 오른쪽 ΔNDVI+SSIM 오버레이</p>
+</section>
+<section>
+  <h2>2. 이종 소스 매칭 — 2022 항공(NAIP) vs 2025 Maxar</h2>
+  <div class="row">
+    <div>
+      <p class="note">SIFT · 60 인라이어 · 빈 셀 30/64</p>
+      <img src="demo_assets/sift_naip.jpg" alt="SIFT matches"/>
+    </div>
+    <div>
+      <p class="note">LightGlue · 949 인라이어 · 빈 셀 11/64</p>
+      <img src="demo_assets/lightglue_naip.jpg" alt="LightGlue matches"/>
+    </div>
+  </div>
+</section>
+<section>
+  <h2>3. CAL FIRE DINS 검증</h2>
+  <div class="row">
+    <img src="demo_assets/dins_boxplot.png" alt="score vs DINS class"/>
+    <img src="demo_assets/dins_pr.png" alt="precision-recall"/>
+  </div>
+  <p class="note">severe 임계값 0.30에서 정밀도 0.781 · 재현율 0.961. 중간 등급은 겹친다. 건물 분류 모델이 아니다.</p>
+</section>
+<footer>
+  라이브 앱: <code>streamlit run app.py</code> · 발표 자료: <code>docs/slides/</code> ·
+  <a href="https://github.com/Jimin-kang216/-999-Trainthon/tree/cursor/aftermap-2b6e">저장소</a>
+</footer>
+</body>
+</html>
