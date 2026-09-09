@@ -1,4 +1,5 @@
 import { getSpecialty } from "@/data/specialties";
+import { demoReviewReply } from "@/lib/demo";
 import { LlmUnavailableError, generateStructured } from "@/lib/llm";
 import { profileBlock, reviewSystemPrompt } from "@/lib/prompts";
 import { reviewReplySchema, reviewRequestSchema } from "@/lib/schemas";
@@ -30,10 +31,10 @@ export async function POST(request: Request) {
       schema: reviewReplySchema,
       schemaName: "review_reply",
     });
-    return Response.json({ result });
+    return Response.json({ result, mode: "llm" });
   } catch (err) {
     if (err instanceof LlmUnavailableError) {
-      return Response.json({ error: err.message, code: "no_api_key" }, { status: 503 });
+      return Response.json({ result: demoReviewReply(profile, review, rating), mode: "demo" });
     }
     console.error("[api/review-reply]", err);
     return Response.json({ error: "답변 생성 중 오류가 발생했습니다." }, { status: 500 });

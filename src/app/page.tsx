@@ -26,6 +26,31 @@ const features = [
   },
 ];
 
+const steps = [
+  { n: "1", href: "/profile", title: "한의원 프로필", body: "이름·지역만 있어도 됩니다. 예시 불러오기로 바로 데모할 수 있습니다." },
+  { n: "2", href: "/check", title: "위법 문구 검사", body: "위반 예시를 불러와 검사합니다. 조항별로 왜 안 되는지 보여 주는 게 핵심 데모입니다." },
+  { n: "3", href: "/generate", title: "안전한 글 생성", body: "같은 한의원 정보로 플레이스 소개글을 만듭니다. API 키가 없어도 데모 모드로 동작합니다." },
+];
+
+const pitch = [
+  {
+    t: "문제 30초",
+    body: "아버지 한의원은 2007년부터 한자리에서 진료하시는데, 위치가 불리하고 홍보를 못 하셔서 환자가 적습니다. 원인은 실력이 아니라 의료광고법입니다. 후기·최고·할인이 전부 위법이라 시작조차 못 합니다.",
+  },
+  {
+    t: "제품 60초",
+    body: "이 도구에 위험한 문구를 넣으면 조항별로 짚고 고칩니다. 원장 말투로 프로필을 적으면 규정을 지킨 플레이스·블로그·인스타 글과 리뷰 답글을 씁니다.",
+  },
+  {
+    t: "시장 30초",
+    body: "첫 고객은 한의원입니다. 같은 문제는 1인 원장 동네 의원 전체입니다. 대행사는 월 100만 원이고, 우리는 월 구독입니다. 진료과 확장은 규칙 파일 추가입니다.",
+  },
+  {
+    t: "Q&A 방어",
+    body: "이 도구는 사전심의를 대체하지 않습니다. 광고성 게시물은 한의사협회 심의를 받아야 합니다. 우리는 위법 초안을 안 쓰게 하는 보조 도구입니다.",
+  },
+];
+
 export default function HomePage() {
   const specialty = specialties[0];
 
@@ -59,6 +84,23 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold">지금 이 순서로 돌려 보세요</h2>
+        <ol className="mt-4 grid gap-3 sm:grid-cols-3">
+          {steps.map((s) => (
+            <li key={s.n}>
+              <Link href={s.href} className="block h-full">
+                <Card className="h-full hover:border-brand transition-colors">
+                  <span className="text-xs font-bold text-brand">STEP {s.n}</span>
+                  <h3 className="mt-1 font-bold">{s.title}</h3>
+                  <p className="mt-2 text-sm text-ink-soft leading-relaxed">{s.body}</p>
+                </Card>
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </section>
+
       <section className="grid gap-4 sm:grid-cols-3">
         {features.map((f) => (
           <Link key={f.href} href={f.href} className="group">
@@ -69,6 +111,19 @@ export default function HomePage() {
             </Card>
           </Link>
         ))}
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold">발표 대본 (약 2분)</h2>
+        <p className="mt-1 text-sm text-ink-soft">2차 심사 발표·Q&amp;A용. 감성 도입은 30초만, 나머지는 데모와 시장입니다.</p>
+        <ol className="mt-4 grid gap-3 sm:grid-cols-2">
+          {pitch.map((p) => (
+            <li key={p.t} className="rounded-xl border border-line bg-white p-5">
+              <h3 className="text-sm font-bold text-brand">{p.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed">{p.body}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section>

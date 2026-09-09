@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { getSpecialty } from "@/data/specialties";
+import { DemoModeBanner } from "@/components/demo-banner";
 import { FindingCard } from "@/components/finding-card";
 import { ProfileSummary } from "@/components/profile-summary";
 import { Button, Card, CopyButton, ErrorNote, Input, Label, PageHeader, Spinner } from "@/components/ui";
@@ -22,6 +23,7 @@ export default function GeneratePage() {
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<GenerateResult | null>(null);
   const [selfCheck, setSelfCheck] = useState<Finding[]>([]);
+  const [mode, setMode] = useState<"llm" | "demo" | null>(null);
 
   const specialty = getSpecialty(profile.specialtyId);
 
@@ -29,6 +31,7 @@ export default function GeneratePage() {
     setLoading(true);
     setError(null);
     setResult(null);
+    setSelfCheck([]);
     try {
       const res = await fetch("/api/generate", {
         method: "POST",
@@ -39,6 +42,7 @@ export default function GeneratePage() {
       if (!res.ok) throw new Error(data.error ?? "생성에 실패했습니다.");
       setResult(data.result);
       setSelfCheck(data.selfCheck ?? []);
+      setMode(data.mode === "llm" ? "llm" : "demo");
     } catch (e) {
       setError(e instanceof Error ? e.message : "생성에 실패했습니다.");
     } finally {
@@ -94,6 +98,7 @@ export default function GeneratePage() {
         </Card>
 
         {error && <ErrorNote>{error}</ErrorNote>}
+        {result && <DemoModeBanner mode={mode} />}
 
         {result && (
           <div className="grid gap-4 lg:grid-cols-[3fr_2fr]">

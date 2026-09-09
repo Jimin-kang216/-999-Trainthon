@@ -1,4 +1,5 @@
 import { getSpecialty } from "@/data/specialties";
+import { demoGenerate, selfCheckText } from "@/lib/demo";
 import { LlmUnavailableError, generateStructured } from "@/lib/llm";
 import { prescan } from "@/lib/prescan";
 import { generateSystemPrompt, profileBlock } from "@/lib/prompts";
@@ -31,12 +32,16 @@ export async function POST(request: Request) {
       schemaName: "clinic_content",
     });
 
-    // 생성 결과를 규칙 기반으로 한 번 더 훑어서 자체 검사 결과를 함께 돌려준다.
     const selfCheck = prescan(`${result.title}\n${result.body}\n${result.hashtags.join(" ")}`, specialty);
-    return Response.json({ result, selfCheck });
+    return Response.json({ result, selfCheck, mode: "llm" });
   } catch (err) {
     if (err instanceof LlmUnavailableError) {
-      return Response.json({ error: err.message, code: "no_api_key" }, { status: 503 });
+      const result = demoGenerate(profile, channel, topic);
+      return Response.json({
+        result,
+        selfCheck: selfCheckText(result, profile.specialtyId),
+        mode: "demo",
+      });
     }
     console.error("[api/generate]", err);
     return Response.json({ error: "생성 중 오류가 발생했습니다." }, { status: 500 });

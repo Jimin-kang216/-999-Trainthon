@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LlmStatusChip } from "./demo-banner";
 
 const links = [
   { href: "/check", label: "광고 문구 검사" },
   { href: "/generate", label: "콘텐츠 생성" },
   { href: "/review", label: "리뷰 답변" },
+  { href: "/plan", label: "이번 주 계획" },
   { href: "/profile", label: "한의원 프로필" },
 ] as const;
 
@@ -16,7 +18,7 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-10 border-b border-line bg-white/90 backdrop-blur">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
-        <Link href="/" className="font-bold tracking-tight text-ink">
+        <Link href="/" className="font-bold tracking-tight text-ink shrink-0">
           동네 한의원 마케팅 AI
         </Link>
         <nav className="flex items-center gap-1 text-sm overflow-x-auto">
@@ -34,6 +36,7 @@ export function Nav() {
               </Link>
             );
           })}
+          <LlmStatusChip />
         </nav>
       </div>
     </header>

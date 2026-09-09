@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { DemoModeBanner } from "@/components/demo-banner";
 import { ProfileSummary } from "@/components/profile-summary";
 import { Button, Card, CopyButton, ErrorNote, Label, PageHeader, Spinner, TextArea } from "@/components/ui";
 import type { ReviewReply } from "@/lib/schemas";
@@ -24,6 +25,7 @@ export default function ReviewPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<ReviewReply | null>(null);
+  const [mode, setMode] = useState<"llm" | "demo" | null>(null);
 
   async function run() {
     setLoading(true);
@@ -38,6 +40,7 @@ export default function ReviewPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "답변 생성에 실패했습니다.");
       setResult(data.result);
+      setMode(data.mode === "llm" ? "llm" : "demo");
     } catch (e) {
       setError(e instanceof Error ? e.message : "답변 생성에 실패했습니다.");
     } finally {
@@ -110,6 +113,7 @@ export default function ReviewPage() {
                 답글과 함께, 답글에서 의도적으로 피한 항목(진료 내용 언급, 개인정보, 유인 표현)이 표시됩니다.
               </Card>
             )}
+            {result && <DemoModeBanner mode={mode} />}
             {result && (
               <>
                 <Card>

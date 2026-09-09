@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { getSpecialty } from "@/data/specialties";
 import { FindingCard } from "@/components/finding-card";
+import { DemoModeBanner } from "@/components/demo-banner";
 import {
   Button,
   Card,
   CopyButton,
   ErrorNote,
-  InfoNote,
   Label,
   PageHeader,
   Select,
@@ -106,11 +106,7 @@ export default function CheckPage() {
 
           {result && (
             <>
-              {mode === "rules-only" && (
-                <InfoNote>
-                  OPENAI_API_KEY가 없어 키워드 기반 검사만 수행했습니다. 키를 설정하면 문맥 검사와 수정본 생성이 활성화됩니다.
-                </InfoNote>
-              )}
+              {mode && <DemoModeBanner mode={mode} />}
 
               <Card>
                 <div className="flex flex-wrap items-center gap-2">
@@ -138,7 +134,7 @@ export default function CheckPage() {
                 </ul>
               )}
 
-              {mode === "llm" && (
+              {result.rewritten && (
                 <Card>
                   <div className="flex items-center justify-between gap-3">
                     <h2 className="font-bold">안전한 수정본</h2>
