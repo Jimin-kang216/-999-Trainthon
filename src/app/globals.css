@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #10233f;
+  --color-ink-soft: #3f5171;
+  --color-brand: #1d4ed8;
+  --color-brand-soft: #dbe6ff;
+  --color-paper: #f6f8fc;
+  --color-line: #dfe5ef;
+  --color-risk-high: #b91c1c;
+  --color-risk-high-soft: #fee2e2;
+  --color-risk-medium: #b45309;
+  --color-risk-medium-soft: #fef3c7;
+  --color-risk-low: #0369a1;
+  --color-risk-low-soft: #e0f2fe;
+  --color-ok: #047857;
+  --color-ok-soft: #d1fae5;
+  --font-sans:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+html {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+}
+
+textarea,
+input,
+select {
+  font: inherit;
+}
