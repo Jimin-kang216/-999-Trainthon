@@ -1,0 +1,27 @@
+{
+  "quadkey": "031311102212",
+  "fire": "Palisades",
+  "n_structures_in_tile": 431,
+  "dins_counts": {
+    "No Damage": 350,
+    "Destroyed (>50%)": 60,
+    "Affected (1-9%)": 16,
+    "Minor (10-25%)": 4,
+    "Major (26-50%)": 1
+  },
+  "roc_auc": 0.843,
+  "average_precision": 0.495,
+  "severe_threshold": 0.3,
+  "severe_precision": 0.338,
+  "severe_recall": 0.883,
+  "moderate_threshold": 0.15,
+  "moderate_precision": 0.197,
+  "moderate_recall": 0.967,
+  "mean_score_by_class": {
+    "Affected (1-9%)": 0.298,
+    "Destroyed (>50%)": 0.429,
+    "Major (26-50%)": 0.135,
+    "Minor (10-25%)": 0.316,
+    "No Damage": 0.236
+  }
+}

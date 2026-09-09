@@ -1,0 +1,21 @@
+{
+  "quadkey": "031311103033",
+  "fire": "Eaton",
+  "pre_date": "2025-01-01",
+  "post_date": "2025-01-10",
+  "cell_m": 49.3,
+  "n_cells": 11449,
+  "n_severe": 4630,
+  "n_moderate": 1909,
+  "severe_area_ha": 1124.7,
+  "moderate_area_ha": 463.7,
+  "mean_d_ndvi": -0.122,
+  "mean_change_raw": 0.5559,
+  "mean_change_registered": 0.2988,
+  "bounds_wgs84": [
+    -118.14138,
+    34.154222,
+    -118.083114,
+    34.202647
+  ]
+}

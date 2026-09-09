@@ -1,0 +1,29 @@
+{
+  "quadkey": "031311103033",
+  "fire": "Eaton",
+  "n_structures_in_tile": 9115,
+  "dins_counts": {
+    "Destroyed (>50%)": 4442,
+    "No Damage": 4105,
+    "Affected (1-9%)": 433,
+    "Minor (10-25%)": 81,
+    "Major (26-50%)": 40,
+    "Inaccessible": 14
+  },
+  "roc_auc": 0.934,
+  "average_precision": 0.922,
+  "severe_threshold": 0.3,
+  "severe_precision": 0.781,
+  "severe_recall": 0.961,
+  "moderate_threshold": 0.15,
+  "moderate_precision": 0.616,
+  "moderate_recall": 0.997,
+  "mean_score_by_class": {
+    "Affected (1-9%)": 0.375,
+    "Destroyed (>50%)": 0.55,
+    "Inaccessible": 0.141,
+    "Major (26-50%)": 0.387,
+    "Minor (10-25%)": 0.377,
+    "No Damage": 0.239
+  }
+}
